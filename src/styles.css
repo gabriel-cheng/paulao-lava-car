@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #2c3093;
+  --color-ink-dark: #1e216b;
+  --color-ink-light: #3b40ac;
+  --color-foam: #f4f8fc;
+  --color-suds: #dcf2fb;
+  --color-signal: #10a0d8;
+  --color-signal-hover: #0d8bc0;
+  --color-chrome: #4e5b7a;
+  --color-whatsapp: #25d366;
+  --color-whatsapp-ink: #06301a;
+
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "DM Mono", monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 84px;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background-color: var(--color-foam);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-signal);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+.bg-hero-grid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgb(44 48 147 / 0.09) 1px,
+    transparent 0
+  );
+  background-size: 24px 24px;
+}
+
+.bg-dark-grid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgb(255 255 255 / 0.1) 1px,
+    transparent 0
+  );
+  background-size: 24px 24px;
+}
