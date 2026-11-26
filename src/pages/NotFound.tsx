@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <section className="py-24 sm:py-32">
       <div className="mx-auto flex min-h-[48vh] max-w-6xl flex-col items-start justify-center gap-5 px-5 sm:px-8">
-        <Logo size="sm" />
+        <Logo variant="onLight" size="sm" />
         <span className="inline-flex items-center rounded-full bg-suds px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-ink">
           Erro 404
         </span>

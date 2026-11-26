@@ -4,13 +4,19 @@ import {
   MapPin,
   MessageCircle,
   Sparkles,
+  type LucideIcon,
 } from "lucide-react";
 import Button from "../ui/Button";
 import ImageSlot from "../ui/ImageSlot";
 import OpenStatus from "../ui/OpenStatus";
 import { business, heroImage } from "../../data/siteData";
 
-const highlights = [
+interface HighlightItem {
+  icon: LucideIcon;
+  text: string;
+}
+
+const highlights: HighlightItem[] = [
   { icon: Clock, text: "Seg a sáb • 8h às 17h" },
   { icon: Sparkles, text: "Agente um horário conosco" },
   { icon: MapPin, text: "Jardim Ypê, Paranavaí-PR" },

@@ -1,13 +1,20 @@
-import { Bike, Car, Truck } from "lucide-react";
+import { Bike, Car, Truck, type LucideIcon } from "lucide-react";
+import type { ImageAsset, VehicleId } from "../../data/siteData";
 import ImageSlot from "./ImageSlot";
 
-const VEHICLE_ICONS = {
+export interface VehicleCardProps {
+  id: VehicleId;
+  title: string;
+  image: ImageAsset;
+}
+
+const VEHICLE_ICONS: Record<VehicleId, LucideIcon> = {
   carros: Car,
   motos: Bike,
   camionetes: Truck,
 };
 
-export default function VehicleCard({ id, title, image }) {
+export default function VehicleCard({ id, title, image }: VehicleCardProps) {
   const Icon = VEHICLE_ICONS[id] ?? Car;
 
   return (

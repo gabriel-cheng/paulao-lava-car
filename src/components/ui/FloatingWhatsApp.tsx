@@ -8,7 +8,7 @@ export default function FloatingWhatsApp() {
       href={business.whatsappLink}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Agendar uma lavagem"
+      aria-label="Chamar no WhatsApp"
     >
       <MessageCircle className="h-5 w-5 shrink-0" aria-hidden="true" />
       <span>WhatsApp</span>

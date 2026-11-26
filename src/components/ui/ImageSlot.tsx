@@ -2,6 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { ImageIcon, Maximize2, X, ZoomIn, ZoomOut } from "lucide-react";
 
+export interface ImageSlotProps {
+  file: string;
+  alt: string;
+  ratio?: string;
+  className?: string;
+  imgClassName?: string;
+  zoomable?: boolean;
+}
+
 // Mostra a imagem de public/images/<file>. Se o arquivo não existir,
 // exibe um espaço reservado dizendo exatamente onde colocá-lo.
 // Ao clicar em uma imagem carregada, abre um modal ampliado para visualização.
@@ -12,13 +21,13 @@ export default function ImageSlot({
   className = "",
   imgClassName = "",
   zoomable = true,
-}) {
-  const [failed, setFailed] = useState(!file);
-  const [open, setOpen] = useState(false);
-  const [zoomed, setZoomed] = useState(false);
-  const triggerRef = useRef(null);
-  const closeBtnRef = useRef(null);
-  const src = file ? `/images/${file}` : null;
+}: ImageSlotProps) {
+  const [failed, setFailed] = useState<boolean>(!file);
+  const [open, setOpen] = useState<boolean>(false);
+  const [zoomed, setZoomed] = useState<boolean>(false);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const closeBtnRef = useRef<HTMLButtonElement | null>(null);
+  const src = file ? `/images/${file}` : undefined;
 
   useEffect(() => {
     if (!open) return;
@@ -27,7 +36,7 @@ export default function ImageSlot({
     document.body.style.overflow = "hidden";
     closeBtnRef.current?.focus();
 
-    const onKeyDown = (e) => {
+    const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setOpen(false);
         setZoomed(false);
@@ -54,7 +63,7 @@ export default function ImageSlot({
         className={`relative w-full overflow-hidden rounded-xl bg-suds ${className}`}
         style={{ aspectRatio: ratio }}
       >
-        {failed ? (
+        {failed || !src ? (
           <div
             className="absolute inset-0 flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-chrome/45 bg-gradient-to-br from-suds via-foam to-suds/80 p-5 text-center text-chrome"
             role="img"
@@ -110,6 +119,7 @@ export default function ImageSlot({
 
       {open &&
         !failed &&
+        src &&
         createPortal(
           <div
             role="dialog"
@@ -135,12 +145,18 @@ export default function ImageSlot({
                 >
                   {zoomed ? (
                     <>
-                      <ZoomOut className="h-4 w-4 text-signal" aria-hidden="true" />
+                      <ZoomOut
+                        className="h-4 w-4 text-signal"
+                        aria-hidden="true"
+                      />
                       <span className="hidden sm:inline">Ajustar à tela</span>
                     </>
                   ) : (
                     <>
-                      <ZoomIn className="h-4 w-4 text-signal" aria-hidden="true" />
+                      <ZoomIn
+                        className="h-4 w-4 text-signal"
+                        aria-hidden="true"
+                      />
                       <span className="hidden sm:inline">Aproximar</span>
                     </>
                   )}
@@ -181,8 +197,8 @@ export default function ImageSlot({
             </div>
 
             <p className="pt-2 text-center text-xs text-suds/75">
-              Clique na imagem para {zoomed ? "ajustar" : "aproximar"} ou pressione
-              Esc para fechar
+              Clique na imagem para {zoomed ? "ajustar" : "aproximar"} ou
+              pressione Esc para fechar
             </p>
           </div>,
           document.body,

@@ -1,20 +1,28 @@
 import { useEffect, useState } from "react";
 
+export interface OpenStatusProps {
+  dark?: boolean;
+  className?: string;
+}
+
 // Aberto de segunda a sábado, das 8h às 17h (horário de Brasília).
-function checkOpen() {
+function checkOpen(): boolean {
   const parts = new Intl.DateTimeFormat("en-US", {
     timeZone: "America/Sao_Paulo",
     weekday: "short",
     hour: "numeric",
     hour12: false,
   }).formatToParts(new Date());
-  const weekday = parts.find((p) => p.type === "weekday").value;
-  const hour = Number(parts.find((p) => p.type === "hour").value) % 24;
+  const weekday = parts.find((p) => p.type === "weekday")?.value;
+  const hour = Number(parts.find((p) => p.type === "hour")?.value ?? 0) % 24;
   return weekday !== "Sun" && hour >= 8 && hour < 17;
 }
 
-export default function OpenStatus({ dark = false, className = "" }) {
-  const [open, setOpen] = useState(checkOpen);
+export default function OpenStatus({
+  dark = false,
+  className = "",
+}: OpenStatusProps) {
+  const [open, setOpen] = useState<boolean>(checkOpen);
 
   useEffect(() => {
     const id = setInterval(() => setOpen(checkOpen()), 60000);

@@ -1,8 +1,16 @@
+import type { ReactNode } from "react";
 import { MapPin, Phone } from "lucide-react";
 import { business } from "../../data/siteData";
-import Logo from "./Logo";
+import Logo from "../ui/Logo";
 
-const developerLinks = [
+interface DeveloperLink {
+  label: string;
+  href: string;
+  ariaLabel: string;
+  icon: ReactNode;
+}
+
+const developerLinks: DeveloperLink[] = [
   {
     label: "GitHub",
     href: "https://github.com/gabriel-cheng",
@@ -40,10 +48,8 @@ export default function Footer() {
     <footer className="border-t border-white/12 bg-ink-dark pt-10 pb-24 text-suds sm:pb-10">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-col items-start gap-2.5">
-            <div className="inline-flex rounded-xl bg-white px-4 py-2.5 shadow-sm">
-              <Logo size="sm" />
-            </div>
+          <div className="flex flex-col gap-2">
+            <Logo variant="onDark" size="md" showTagline />
             <p className="text-xs text-suds/75">
               © {new Date().getFullYear()} {business.name}. Todos os direitos
               reservados.

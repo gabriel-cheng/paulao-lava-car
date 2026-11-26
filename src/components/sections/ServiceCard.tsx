@@ -1,14 +1,22 @@
 import { Check, Droplets, MessageCircle, Sparkles } from "lucide-react";
+import type { ServiceItem } from "../../data/siteData";
 import Button from "../ui/Button";
 import { business } from "../../data/siteData";
 
-function buildServiceWhatsappLink(serviceTitle) {
+export type ServiceCardProps = Omit<ServiceItem, "id">;
+
+function buildServiceWhatsappLink(serviceTitle: string): string {
   const base = business.whatsappLink.split("?")[0];
   const text = `Olá! Vim pelo site e gostaria de saber sobre a ${serviceTitle}.`;
   return `${base}?text=${encodeURIComponent(text)}`;
 }
 
-export default function ServiceCard({ title, description, items, featured }) {
+export default function ServiceCard({
+  title,
+  description,
+  items,
+  featured,
+}: ServiceCardProps) {
   const Icon = featured ? Sparkles : Droplets;
 
   return (

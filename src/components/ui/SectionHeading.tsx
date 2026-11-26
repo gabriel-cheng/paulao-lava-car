@@ -1,10 +1,18 @@
+export interface SectionHeadingProps {
+  eyebrow?: string;
+  title: string;
+  intro?: string;
+  dark?: boolean;
+  className?: string;
+}
+
 export default function SectionHeading({
   eyebrow,
   title,
   intro,
   dark = false,
   className = "",
-}) {
+}: SectionHeadingProps) {
   return (
     <div className={`mb-10 max-w-2xl ${className}`}>
       {eyebrow && (

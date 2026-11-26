@@ -5,7 +5,12 @@ import Button from "../ui/Button";
 import Logo from "../ui/Logo";
 import { business } from "../../data/siteData";
 
-const links = [
+interface NavLink {
+  href: string;
+  label: string;
+}
+
+const links: NavLink[] = [
   { href: "/#servicos", label: "Serviços" },
   { href: "/#trabalhos", label: "Trabalhos" },
   { href: "/#galeria", label: "Galeria" },
@@ -13,11 +18,11 @@ const links = [
 ];
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   return (
     <header className="sticky top-0 z-30 border-b border-white/12 bg-ink/95 text-white backdrop-blur-md">
-      <div className="mx-auto flex min-h-17 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
+      <div className="mx-auto flex min-h-17 max-w-6xl items-center justify-between gap-4 px-5 py-2 sm:px-8">
         <Link to="/" className="group no-underline">
           <Logo variant="onDark" size="md" />
         </Link>

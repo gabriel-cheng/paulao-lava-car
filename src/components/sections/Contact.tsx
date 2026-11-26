@@ -16,7 +16,7 @@ import OpenStatus from "../ui/OpenStatus";
 import { business } from "../../data/siteData";
 
 export default function Contact() {
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState<boolean>(false);
   const fullAddress = `${business.address.line1}, ${business.address.line2}`;
 
   const handleCopyAddress = async () => {

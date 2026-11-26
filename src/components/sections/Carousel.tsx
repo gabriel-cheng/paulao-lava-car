@@ -1,22 +1,40 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type TouchEvent,
+} from "react";
 import { ChevronLeft, ChevronRight, Pause } from "lucide-react";
+import type { ImageAsset } from "../../data/siteData";
 import ImageSlot from "../ui/ImageSlot";
+
+export interface CarouselProps {
+  items: ImageAsset[];
+}
 
 const INTERVAL_MS = 4500;
 
 // Carrossel automático e manual: avança sozinho, pausa ao passar o mouse,
 // aceita setas, teclado, pontos e deslize no celular.
-export default function Carousel({ items }) {
-  const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const touchStart = useRef(null);
+export default function Carousel({ items }: CarouselProps) {
+  const [index, setIndex] = useState<number>(0);
+  const [paused, setPaused] = useState<boolean>(false);
+  const touchStart = useRef<number | null>(null);
   const total = items.length;
 
   const prefersReducedMotion =
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const go = useCallback((next) => setIndex((next + total) % total), [total]);
+  const go = useCallback(
+    (next: number) => {
+      if (total === 0) return;
+      setIndex((next + total) % total);
+    },
+    [total],
+  );
 
   useEffect(() => {
     if (paused || prefersReducedMotion || total < 2) return;
@@ -24,14 +42,14 @@ export default function Carousel({ items }) {
     return () => clearTimeout(id);
   }, [index, paused, prefersReducedMotion, total]);
 
-  const onTouchEnd = (e) => {
+  const onTouchEnd = (e: TouchEvent<HTMLDivElement>) => {
     if (touchStart.current === null) return;
     const delta = e.changedTouches[0].clientX - touchStart.current;
     if (Math.abs(delta) > 40) go(index + (delta < 0 ? 1 : -1));
     touchStart.current = null;
   };
 
-  const onKeyDown = (e) => {
+  const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "ArrowLeft") {
       e.preventDefault();
       go(index - 1);

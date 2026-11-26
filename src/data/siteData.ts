@@ -1,7 +1,51 @@
 // Tudo que aparece na página vem daqui. Edite textos e nomes de imagens neste arquivo.
 // As imagens ficam em: public/images/  (ex.: public/images/hero.jpg)
 
-export const business = {
+export interface BusinessHours {
+  days: string;
+  time: string;
+}
+
+export interface BusinessInfo {
+  name: string;
+  phoneDisplay: string;
+  phoneLink: string;
+  whatsappLink: string;
+  email: string;
+  address: {
+    line1: string;
+    line2: string;
+  };
+  mapsLink: string;
+  hours: BusinessHours[];
+}
+
+export interface ImageAsset {
+  file: string;
+  alt: string;
+}
+
+export interface ServiceItem {
+  id: string;
+  title: string;
+  description: string;
+  items: string[];
+  featured?: boolean;
+}
+
+export type VehicleId = "carros" | "motos" | "camionetes";
+
+export interface VehicleItem {
+  id: VehicleId;
+  title: string;
+  image: ImageAsset;
+}
+
+export interface WorkExample extends ImageAsset {
+  caption: string;
+}
+
+export const business: BusinessInfo = {
   name: "Paulão Lava-car",
   phoneDisplay: "(44) 99161-4259",
   phoneLink: "tel:+5544991614259",
@@ -25,12 +69,12 @@ export const business = {
 };
 
 // Imagem principal do topo da página
-export const heroImage = {
+export const heroImage: ImageAsset = {
   file: "vehicles/car_silver_03.jpeg",
   alt: "Carro recém-lavado no Paulão Lava-car",
 };
 
-export const services = [
+export const services: ServiceItem[] = [
   {
     id: "simples",
     title: "Lavagem simples",
@@ -53,7 +97,7 @@ export const services = [
   },
 ];
 
-export const vehicles = [
+export const vehicles: VehicleItem[] = [
   {
     id: "carros",
     title: "Carros",
@@ -78,7 +122,7 @@ export const vehicles = [
 ];
 
 // Serviços já feitos (grade em destaque). Troque os nomes dos arquivos pelos seus.
-export const workExamples = [
+export const workExamples: WorkExample[] = [
   {
     file: "vehicles/car_silver_04.jpeg",
     alt: "Carro após lavagem completa",
@@ -102,7 +146,7 @@ export const workExamples = [
 ];
 
 // Carrossel: adicione ou remova itens à vontade.
-export const carouselImages = [
+export const carouselImages: ImageAsset[] = [
   { file: "vehicles/car_black_01.jpeg", alt: "Serviço realizado 1" },
   { file: "vehicles/car_black_02.jpeg", alt: "Serviço realizado 2" },
   { file: "vehicles/car_black_03.jpeg", alt: "Serviço realizado 3" },

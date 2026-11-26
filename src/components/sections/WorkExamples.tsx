@@ -18,7 +18,7 @@ export default function WorkExamples() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {workExamples.map((w, i) => (
             <figure
-              key={w.file}
+              key={`${w.file}-${i}`}
               className="group flex flex-col overflow-hidden rounded-2xl border-2 border-ink/15 bg-white transition duration-200 hover:-translate-y-0.5 hover:border-ink hover:shadow-[6px_6px_0_#10a0d8]"
             >
               <div className="overflow-hidden">
