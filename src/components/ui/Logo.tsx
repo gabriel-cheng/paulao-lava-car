@@ -19,7 +19,7 @@ const SIZE_MAP: Record<
   },
   md: {
     container: "min-w-[9.75rem]",
-    text: "text-[1.65rem]",
+    text: "text-[2rem]",
     tagline: "text-[11px]",
   },
   lg: {
@@ -42,27 +42,29 @@ export default function Logo({
     <span
       className={`inline-flex flex-col select-none ${s.container} ${className}`}
     >
-      <span
-        className={`self-start font-display font-extrabold uppercase leading-[0.92] tracking-tight ${s.text} ${
-          isDarkBg ? "text-white" : "text-ink"
-        }`}
-      >
-        PAULÃO
-      </span>
-      <span
-        className={`flex w-full justify-end font-display font-extrabold uppercase leading-[0.92] tracking-tight ${s.text} ${
-          isDarkBg ? "text-[#5ED7FF]" : "text-[#0B82B5]"
-        }`}
-      >
-        LAVA-CAR
-      </span>
+      <div className="max-w-fit">
+        <span
+          className={`self-start font-display font-extrabold uppercase leading-[0.92] tracking-tight ${s.text} ${
+            isDarkBg ? "text-white" : "text-ink"
+          }`}
+        >
+          PAULÃO
+        </span>
+        <span
+          className={`flex w-full justify-end font-display font-extrabold italic uppercase leading-[0.92] tracking-tight text-base ${
+            isDarkBg ? "text-[#5ED7FF]" : "text-[#0B82B5]"
+          }`}
+        >
+          LAVA-CAR
+        </span>
+      </div>
       {showTagline && (
         <span
-          className={`mt-1.5 flex w-full justify-end font-sans font-semibold uppercase tracking-[0.16em] ${s.tagline} ${
+          className={`mt-1.5 flex font-sans font-semibold uppercase tracking-[0.16em] ${s.tagline} ${
             isDarkBg ? "text-suds/80" : "text-chrome"
           }`}
         >
-          Paranavaí • PR
+          Lavagem Automotiva
         </span>
       )}
     </span>
