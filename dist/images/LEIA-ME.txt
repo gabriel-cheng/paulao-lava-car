@@ -1,4 +1,0 @@
-Coloque suas imagens nesta pasta com os nomes definidos em src/data/siteData.js:
-hero.jpg, carros.jpg, motos.jpg, camionetes.jpg,
-servico-1.jpg ... servico-4.jpg, galeria-1.jpg ... galeria-6.jpg
-Para usar outros nomes ou mais imagens, edite o arquivo src/data/siteData.js.

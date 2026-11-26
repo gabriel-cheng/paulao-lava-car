@@ -18,8 +18,11 @@ interface HighlightItem {
 
 const highlights: HighlightItem[] = [
   { icon: Clock, text: "Seg a sáb • 8h às 17h" },
-  { icon: Sparkles, text: "Agente um horário conosco" },
-  { icon: MapPin, text: "Jardim Ypê, Paranavaí-PR" },
+  { icon: Sparkles, text: "Agende um horário conosco" },
+  {
+    icon: MapPin,
+    text: "R. Takeshi Mitsuyasu, 587, Jardim Ypê, Paranavaí - PR",
+  },
 ];
 
 export default function Hero() {
@@ -45,8 +48,8 @@ export default function Hero() {
           </h1>
 
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-chrome sm:text-xl">
-            Escolha entre a lavagem simples ou a completa. Atendimento rápido,
-            capricho nos detalhes e entrega pronta para rodar no Jardim Ypê.
+            Escolha entre a lavagem simples ou a completa. Oferecemos um rápido
+            atendimento, atenção nos detalhes e um serviço de qualidade.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3.5">

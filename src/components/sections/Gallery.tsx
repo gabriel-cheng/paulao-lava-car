@@ -9,7 +9,7 @@ export default function Gallery() {
         <SectionHeading
           eyebrow="Galeria"
           title="Mais trabalhos"
-          intro="Veja alguns dos nossos diversos trabalhos já feitos."
+          intro="Veja um pouco mais do trabalho."
         />
         <Carousel items={carouselImages} />
       </div>

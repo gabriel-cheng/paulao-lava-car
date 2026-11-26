@@ -40,7 +40,7 @@ export default function Contact() {
             dark
             eyebrow="Onde estamos"
             title="Venha lavar com a gente"
-            intro="Chame no WhatsApp ou passe direto aqui no Jardim Ypê. Não precisa agendar."
+            intro="Agende um horário pelo WhatsApp ou venha nos fazer uma visita."
             className="mb-7"
           />
 
